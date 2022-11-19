@@ -12,12 +12,17 @@ void menuPrincipal(){
 
 void sistemaBibliotecario(){
     int opc;
+    static bookListRegister listaRegistro = NULL;
     do{
         system("cls");
         menuBibliotecario();
         cin>>opc;
         switch(opc){
-            
+            case 1:
+                system("cls");
+                RegistrarLibro(listaRegistro);
+                RegistrarLibroArchivo(listaRegistro);
+                break;
         } 
     }while (opc!=0);
 

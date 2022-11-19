@@ -1,7 +1,4 @@
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string>
+#include "Funciones.h"
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
 
@@ -40,14 +37,14 @@ int ingresarSistemaEstudiante(string cod){
     ifstream archivo(NOMBRE_ESTUDIANTE);
     string linea;
     char delimitador = ',';
-    getline(archivo, linea);
     while (getline(archivo, linea)){
         stringstream stream(linea);
         string codE;
         getline(stream, codE, delimitador);
-        getline(stream, codE, delimitador);
-        getline(stream, codE, delimitador);
         if(cod == codE){
+            student.codigo = codE;
+            getline(stream, student.nombre, delimitador);
+            getline(stream, student.correo, delimitador);
             flag = 1;
             break;
         }
@@ -58,7 +55,7 @@ int ingresarSistemaEstudiante(string cod){
 
 void registrarEstudiante(string nombre, string correo, string codigo){
     fstream archivo;
-    archivo.open(NOMBRE_ESTUDIANTE,ios::in|ios::app);
-    archivo<<nombre<<","<<correo<<","<<codigo<<endl;
+    archivo.open(NOMBRE_ESTUDIANTE,ios::app);
+    archivo<<codigo<<","<<nombre<<","<<correo<<endl;
     archivo.close();
 }
