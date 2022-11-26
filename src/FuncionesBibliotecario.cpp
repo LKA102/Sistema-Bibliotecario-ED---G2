@@ -1,5 +1,7 @@
 #include "Funciones.h"
-#define LISTA_REGISTRADOS "LibrosRegistrados.csv"
+extern Student estudiante;
+extern bookListRegister listaRegistro;
+
 
 void menuBibliotecario(){
     std::cout<<"\t\tMENU BIBLIOTECARIO"<<std::endl;
@@ -24,19 +26,19 @@ bookListRegister crearNodo (){
     cin>>nuevo->libro.anio_publicacion;
     cout<<"Introduzca la cantidad de paginas del libro"<<endl;
     cin>>nuevo->libro.num_paginas;
-    nuevo->sgt = NULL;
     return nuevo;
 }
 
 void RegistrarLibro(bookListRegister &listaRegistro){
-    bookListRegister aux = NULL;
+    bookListRegister nuevo = crearNodo();
+    bookListRegister p = listaRegistro;
     if (listaRegistro == NULL){
         listaRegistro = crearNodo();
     }
     else{
-        aux = crearNodo();
-        aux->sgt = listaRegistro;
-        listaRegistro = aux;
+        while (p ->sgt != NULL)
+            p = p->sgt;
+        p->sgt = nuevo;
     }
     cout<<"Registrando libro...."<<endl;
     Sleep(1000);

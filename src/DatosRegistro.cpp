@@ -1,6 +1,7 @@
 #include "Funciones.h"
-#define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
-#define NOMBRE_ESTUDIANTE "Estudiantes.csv"
+extern Student estudiante;
+extern bookListRegister listaRegistro;
+
 
 using namespace std;
 
@@ -42,9 +43,10 @@ int ingresarSistemaEstudiante(string cod){
         string codE;
         getline(stream, codE, delimitador);
         if(cod == codE){
-            student.codigo = codE;
-            getline(stream, student.nombre, delimitador);
-            getline(stream, student.correo, delimitador);
+            estudiante = new (struct Estudiante);
+            estudiante->codigo = codE;
+            getline(stream, estudiante->nombre, delimitador);
+            getline(stream, estudiante->correo, delimitador);
             flag = 1;
             break;
         }
