@@ -33,7 +33,7 @@ void RegistrarLibro(bookListRegister &listaRegistro){
     bookListRegister nuevo = crearNodo();
     bookListRegister p = listaRegistro;
     if (listaRegistro == NULL){
-        listaRegistro = crearNodo();
+        listaRegistro = nuevo;
     }
     else{
         while (p ->sgt != NULL)
