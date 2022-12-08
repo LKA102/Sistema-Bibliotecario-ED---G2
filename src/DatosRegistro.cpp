@@ -1,6 +1,6 @@
 #include "Funciones.h"
 extern Student estudiante;
-extern bookListRegister listaRegistro;
+extern bookListRegister listaDisponible;
 
 
 using namespace std;

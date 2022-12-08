@@ -1,6 +1,7 @@
 #include "Funciones.h"
 extern Student estudiante;
-extern bookListRegister listaRegistro;
+extern bookListRegister listaDisponible;
+extern bookListRequest listaSolicitado;
 
 
 void menuBibliotecario(){
@@ -16,7 +17,7 @@ void menuBibliotecario(){
 
 
 bookListRegister crearNodo (){
-    bookListRegister nuevo = new (struct LibrosRegistrados);
+    bookListRegister nuevo = new (struct LibrosDisponibles);
     cin.ignore(255, '\n');
     cout<<"Introduzca el nombre del autor del libro"<<endl;
     getline(cin, nuevo->libro.autor);
@@ -29,11 +30,11 @@ bookListRegister crearNodo (){
     return nuevo;
 }
 
-void RegistrarLibro(bookListRegister &listaRegistro){
+void RegistrarLibro(bookListRegister &listaDisponible){
     bookListRegister nuevo = crearNodo();
-    bookListRegister p = listaRegistro;
-    if (listaRegistro == NULL){
-        listaRegistro = nuevo;
+    bookListRegister p = listaDisponible;
+    if (listaDisponible == NULL){
+        listaDisponible = nuevo;
     }
     else{
         while (p ->sgt != NULL)
@@ -46,14 +47,16 @@ void RegistrarLibro(bookListRegister &listaRegistro){
     system("pause");
 }
 
-void RegistrarLibroArchivo(bookListRegister &listaRegistro){
-    bookListRegister aux = listaRegistro;
+void RegistrarLibroArchivo(bookListRegister &listaDisponible){
+    bookListRegister aux = listaDisponible;
     ofstream archivo (LISTA_REGISTRADOS);
     if (archivo.is_open()){
-        while (aux!=NULL){
+        while (aux->sgt!=listaDisponible){
             archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
             aux = aux->sgt;
         }
+        archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
+        aux = aux->sgt;
     }
     else{
         cout<<"Hubo problemas para abrir archivo"<<endl;

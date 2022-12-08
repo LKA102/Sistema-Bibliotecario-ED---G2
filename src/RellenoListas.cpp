@@ -1,8 +1,8 @@
 #include "Funciones.h"
 extern Student estudiante;
-extern bookListRegister listaRegistro;
+extern bookListRegister listaDisponible;
 
-void rellenarListaRegistrados(bookListRegister &listaRegistro){
+void rellenarListaRegistrados(bookListRegister &listaDisponible){
     bookListRegister aux = NULL;
     ifstream archivo (LISTA_REGISTRADOS);
     string linea, anio, paginas;
@@ -10,18 +10,18 @@ void rellenarListaRegistrados(bookListRegister &listaRegistro){
     if (archivo.is_open()){
         while (getline(archivo, linea)){
             stringstream stream(linea);
-            if (listaRegistro == NULL){
-                listaRegistro = new (struct LibrosRegistrados);
-                getline(stream, listaRegistro->libro.autor,delimitador);
-                getline(stream, listaRegistro->libro.titulo,delimitador);
+            if (listaDisponible == NULL){
+                listaDisponible = new (struct LibrosDisponibles);
+                getline(stream, listaDisponible->libro.autor,delimitador);
+                getline(stream, listaDisponible->libro.titulo,delimitador);
                 getline(stream, anio,delimitador);
                 getline(stream, paginas,delimitador);
-                listaRegistro->libro.anio_publicacion = std::stoi(anio);
-                listaRegistro->libro.num_paginas = std::stoi(paginas);
-                aux = listaRegistro;
+                listaDisponible->libro.anio_publicacion = std::stoi(anio);
+                listaDisponible->libro.num_paginas = std::stoi(paginas);
+                aux = listaDisponible;
             }
             else{
-            aux -> sgt = new (struct LibrosRegistrados);
+            aux -> sgt = new (struct LibrosDisponibles);
             getline(stream, aux->sgt->libro.autor,delimitador);
             getline(stream, aux->sgt->libro.titulo,delimitador);
             getline(stream, anio,delimitador);

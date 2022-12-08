@@ -1,13 +1,14 @@
 #include "Funciones.h"
 
  Student estudiante = NULL;
- bookListRegister listaRegistro = NULL;
+ bookListRegister listaDisponible = NULL;
+ bookListRequest listaSolicitado = NULL;
 
 
 int main(){
     int opc, opcEst, opcReg;
     string nomUsu,pasUsu,codEst,nomEst,corEst;
-    rellenarListaRegistrados(listaRegistro);
+    rellenarListaRegistrados(listaDisponible);
     do{
         menuPrincipal();
         cin>>opc;

@@ -12,7 +12,8 @@
 
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
-#define LISTA_REGISTRADOS "LibrosRegistrados.csv"
+#define LISTA_REGISTRADOS "LibrosDisponibles.csv"
+
 
 using namespace std;
 
@@ -29,28 +30,33 @@ struct Estudiante{
     string nombre;
     string correo;
     string codigo;
-    unsigned cantLibros;
+    //Libros librosSolicitados[3];
+    //unsigned cantLibros = 0;
 };
 
 typedef Estudiante* Student;
 
 
 
-//Lista de libros registrados por el bibliotecario
-struct LibrosRegistrados{
+//Lista de libros disponibles por el bibliotecario
+struct LibrosDisponibles{
     Libros libro;
-    struct LibrosRegistrados* sgt = NULL;
+    struct LibrosDisponibles* sgt = NULL;
 };
-typedef LibrosRegistrados* bookListRegister;
+typedef LibrosDisponibles* bookListRegister;
+
+//Lista de libros disponibles
+
 
 
 //Lista de solicitudes de libros para prestar
 struct LibrosSolicitados{
-    Libros libro;
-    Student estudiante;
-    struct LibrosSolicitados* sgt;
+    string libro;
+    Student Estudiante;
+    struct LibrosSolicitados* sgt = NULL;
 };
 typedef LibrosSolicitados* bookListRequest;
+
 
 //Funciones Sistema
 void menuPrincipal(void);
@@ -63,14 +69,15 @@ int ingresarSistemaEstudiante(std::string);
 void registrarEstudiante(std::string,std::string,std::string);
 
 //Funciones automaticas 
-void rellenarListaRegistrados(bookListRegister &listaRegistro);
+void rellenarListaRegistrados(bookListRegister &listaDisponible);
 
 //Funciones Bibliotecario
 void menuBibliotecario();
 bookListRegister crearNodo ();
-void RegistrarLibro(bookListRegister &listaRegistro);
-void RegistrarLibroArchivo(bookListRegister &listaRegistro);
+void RegistrarLibro(bookListRegister &listaDisponible);
+void RegistrarLibroArchivo(bookListRegister &listaDisponible);
 
 //Funciones Estudiante
 
 void buscarLibro();
+void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);

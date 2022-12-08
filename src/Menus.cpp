@@ -1,6 +1,7 @@
 #include "Funciones.h"
 extern Student estudiante;
-extern bookListRegister listaRegistro;
+extern bookListRegister listaDisponible;
+extern bookListRequest listaSolicitado;
 
 
 void menuPrincipal(){
@@ -23,8 +24,8 @@ void sistemaBibliotecario(){
         switch(opc){
             case 1:
                 system("cls");
-                RegistrarLibro(listaRegistro);
-                RegistrarLibroArchivo(listaRegistro);
+                RegistrarLibro(listaDisponible);
+                RegistrarLibroArchivo(listaDisponible);
                 break;
 
             case 4:
@@ -48,6 +49,9 @@ void sistemaEstudiante(){
         switch(opc){
             case 1: 
                 buscarLibro();
+                break;
+            case 2:
+                SolicitarLibro(listaDisponible, listaSolicitado);
                 break;
         } 
     } while (opc!=0);
