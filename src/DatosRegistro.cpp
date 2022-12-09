@@ -1,9 +1,7 @@
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string>
-#define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
-#define NOMBRE_ESTUDIANTE "Estudiantes.csv"
+#include "Funciones.h"
+extern Student estudiante;
+extern bookListRegister listaDisponible;
+
 
 using namespace std;
 
@@ -40,14 +38,15 @@ int ingresarSistemaEstudiante(string cod){
     ifstream archivo(NOMBRE_ESTUDIANTE);
     string linea;
     char delimitador = ',';
-    getline(archivo, linea);
     while (getline(archivo, linea)){
         stringstream stream(linea);
         string codE;
         getline(stream, codE, delimitador);
-        getline(stream, codE, delimitador);
-        getline(stream, codE, delimitador);
         if(cod == codE){
+            estudiante = new (struct Estudiante);
+            estudiante->codigo = codE;
+            getline(stream, estudiante->nombre, delimitador);
+            getline(stream, estudiante->correo, delimitador);
             flag = 1;
             break;
         }
@@ -58,7 +57,7 @@ int ingresarSistemaEstudiante(string cod){
 
 void registrarEstudiante(string nombre, string correo, string codigo){
     fstream archivo;
-    archivo.open(NOMBRE_ESTUDIANTE,ios::in|ios::app);
-    archivo<<nombre<<","<<correo<<","<<codigo<<endl;
+    archivo.open(NOMBRE_ESTUDIANTE,ios::app);
+    archivo<<codigo<<","<<nombre<<","<<correo<<endl;
     archivo.close();
 }

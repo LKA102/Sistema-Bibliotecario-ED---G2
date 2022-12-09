@@ -1,10 +1,14 @@
 #include "Funciones.h"
 
-using namespace std;
+ Student estudiante = NULL;
+ bookListRegister listaDisponible = NULL;
+ bookListRequest listaSolicitado = NULL;
+
 
 int main(){
     int opc, opcEst, opcReg;
     string nomUsu,pasUsu,codEst,nomEst,corEst;
+    rellenarListaRegistrados(listaDisponible);
     do{
         menuPrincipal();
         cin>>opc;
