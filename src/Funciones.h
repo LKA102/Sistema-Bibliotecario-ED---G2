@@ -27,11 +27,10 @@ struct Libros{
 };
 
 struct Estudiante{
+    string codigo;
     string nombre;
     string correo;
-    string codigo;
-    //Libros librosSolicitados[3];
-    //unsigned cantLibros = 0;
+    string librosSolicitados[2] = {" "," "};
 };
 
 typedef Estudiante* Student;
@@ -52,7 +51,7 @@ typedef LibrosDisponibles* bookListRegister;
 //Lista de solicitudes de libros para prestar
 struct LibrosSolicitados{
     string libro;
-    Student Estudiante;
+    Student student = new (struct Estudiante);
     struct LibrosSolicitados* sgt = NULL;
 };
 typedef LibrosSolicitados* bookListRequest;
@@ -81,3 +80,4 @@ void RegistrarLibroArchivo(bookListRegister &listaDisponible);
 
 void buscarLibro();
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
+void actualizarListaEstudiantes(Student estudiante);

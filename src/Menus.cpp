@@ -27,12 +27,8 @@ void sistemaBibliotecario(){
                 RegistrarLibro(listaDisponible);
                 RegistrarLibroArchivo(listaDisponible);
                 break;
-
-            case 4:
-                delete(estudiante);
-                estudiante = NULL;
-                opc = 0;
-                break;
+            
+               
         } 
     }while (opc!=0);
 
@@ -53,6 +49,11 @@ void sistemaEstudiante(){
             case 2:
                 SolicitarLibro(listaDisponible, listaSolicitado);
                 break;
+            case 0:
+                delete(estudiante);
+                estudiante = NULL;
+                break;
+
         } 
     } while (opc!=0);
     
@@ -70,7 +71,7 @@ void menuEstudiante2(){
     system("cls");
     cout<<"Sistema bibliotecario del estudiante"<<endl;
     cout<<"1.- Buscar Libro"<<endl;
-    cout<<"2.- Registrar nuevo estudiante"<<endl;
+    cout<<"2.- Solicitar Libro"<<endl;
     cout<<"0.- volver"<<endl;
 }
 

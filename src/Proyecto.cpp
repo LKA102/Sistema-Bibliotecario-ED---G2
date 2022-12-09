@@ -68,13 +68,14 @@ int main(){
                             break;
                         }
                         case 2:{
-                            system("cls");
+                             system("cls");
+                            cin.ignore(255,'\n');
                             cout<<"Ingrese nombre de usuario"<<endl;
-                            cin>>nomEst;
+                            getline(cin,nomEst);
                             cout<<"Ingrese correo institucional"<<endl;
-                            cin>>corEst;
+                            getline(cin,corEst);
                             cout<<"Ingrese codigo de estudiante"<<endl;
-                            cin>>codEst;
+                            getline(cin,codEst);
                             cout<<"Presione 1 para registrar o 0 para cancelar"<<endl;
                             cin>>opcReg;
                             if(opcReg == 1){

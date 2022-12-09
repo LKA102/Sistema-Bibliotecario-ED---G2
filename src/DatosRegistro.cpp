@@ -47,6 +47,8 @@ int ingresarSistemaEstudiante(string cod){
             estudiante->codigo = codE;
             getline(stream, estudiante->nombre, delimitador);
             getline(stream, estudiante->correo, delimitador);
+            getline(stream, estudiante->librosSolicitados[0], delimitador);
+            getline(stream, estudiante->librosSolicitados[1], delimitador);
             flag = 1;
             break;
         }
@@ -58,6 +60,6 @@ int ingresarSistemaEstudiante(string cod){
 void registrarEstudiante(string nombre, string correo, string codigo){
     fstream archivo;
     archivo.open(NOMBRE_ESTUDIANTE,ios::app);
-    archivo<<codigo<<","<<nombre<<","<<correo<<endl;
+    archivo<<codigo<<","<<nombre<<","<<correo<<","<<" ,"<<" "<<endl;
     archivo.close();
 }

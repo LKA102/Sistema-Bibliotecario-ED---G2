@@ -51,7 +51,7 @@ void RegistrarLibroArchivo(bookListRegister &listaDisponible){
     bookListRegister aux = listaDisponible;
     ofstream archivo (LISTA_REGISTRADOS);
     if (archivo.is_open()){
-        while (aux->sgt!=listaDisponible){
+        while (aux->sgt!=NULL){
             archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
             aux = aux->sgt;
         }

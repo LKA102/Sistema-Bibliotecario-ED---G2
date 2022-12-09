@@ -38,20 +38,27 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
         }
         if (encontrado){
             if (listaSolicitado == NULL){
-                nuevo->libro = aux1->libro.autor;
-                nuevo->Estudiante->nombre = estudiante->nombre; 
-                nuevo->Estudiante->correo = estudiante->correo; 
-                nuevo->Estudiante->codigo = estudiante->codigo;
+                nuevo->libro = aux1->libro.titulo;
+                nuevo->student->nombre = estudiante->nombre; 
+                nuevo->student->correo = estudiante->correo; 
+                nuevo->student->codigo = estudiante->codigo;
                 listaSolicitado = nuevo; 
+                estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                estudiante->librosSolicitados[1] = "ESPERA";
+                actualizarListaEstudiantes(estudiante);
+
             }
             else{
                 while (aux2->sgt!=NULL)
                     aux2 = aux2->sgt;
                 nuevo->libro = aux1->libro.autor;
-                nuevo->Estudiante->nombre = estudiante->nombre; 
-                nuevo->Estudiante->correo = estudiante->correo; 
-                nuevo->Estudiante->codigo = estudiante->codigo;
+                nuevo->student->nombre = estudiante->nombre; 
+                nuevo->student->correo = estudiante->correo; 
+                nuevo->student->codigo = estudiante->codigo;
                 aux2->sgt = nuevo;
+                estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                estudiante->librosSolicitados[1] = "ESPERA";
+                actualizarListaEstudiantes(estudiante);
             }
         }
         else{
