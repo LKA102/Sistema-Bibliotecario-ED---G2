@@ -1,10 +1,12 @@
 #include "Funciones.h"
 extern Student estudiante;
 extern bookListRegister listaDisponible;
+extern bookListRequest listaSolicitado;
+extern bookListLent listaPrestado;
 
 void rellenarListaRegistrados(bookListRegister &listaDisponible){
     bookListRegister aux = NULL;
-    ifstream archivo (LISTA_REGISTRADOS);
+    ifstream archivo (LISTA_DISPONIBLES);
     string linea, anio, paginas;
     char delimitador = ',';
     if (archivo.is_open()){
@@ -40,23 +42,33 @@ void actualizarListaEstudiantes(Student estudiante){
 
     fstream archivo;
     archivo.open(NOMBRE_ESTUDIANTE,ios::in|ios::out);
-    string linea;
-    char delimitador = ',';
+    string texto;
+    vector<string> lineas;
+    texto = estudiante->codigo + "," + estudiante->nombre + "," + estudiante->correo + "," + estudiante->librosSolicitados[0] + "," + estudiante->librosSolicitados[1];
     if (archivo.is_open()){
+        string linea;
+
         while (getline(archivo, linea)){
-            size_t pos = linea.find(estudiante->correo);
-
-            if (pos != string::npos){
-                linea.replace(pos, estudiante->correo.length(), estudiante->correo + "," + estudiante->librosSolicitados[0] + "," + estudiante->librosSolicitados[1]);
-                }
-
-            archivo.seekp(archivo.tellg()-linea.length()-1);
-            archivo<<linea;
-            }
-
-            archivo.close();
+            lineas.push_back(linea);
         }
-       
+        archivo.close();
+    }
+    else{
+        cout<<"No se ha podido abrir el archivo"<<endl;
+        system("pause");
+    }
+
+    ofstream reescribir;
+    reescribir.open(NOMBRE_ESTUDIANTE);
+    if (reescribir.is_open()){
+        for (int i=0; i<lineas.size(); i++){
+            if (lineas[i].find(estudiante->codigo) != std::string::npos)
+                reescribir<<texto<<endl;
+            else
+                reescribir<<lineas[i]<<endl;
+        }
+        reescribir.close();
+    }
     else{
         cout<<"No se ha podido abrir el archivo"<<endl;
         system("pause");

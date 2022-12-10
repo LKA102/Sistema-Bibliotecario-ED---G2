@@ -2,6 +2,7 @@
 extern Student estudiante;
 extern bookListRegister listaDisponible;
 extern bookListRequest listaSolicitado;
+extern bookListLent listaPrestado;
 
 
 void menuPrincipal(){
@@ -47,7 +48,7 @@ void sistemaEstudiante(){
                 buscarLibro();
                 break;
             case 2:
-                SolicitarLibro(listaDisponible, listaSolicitado);
+                SolicitarLibro(listaDisponible, listaSolicitado, listaPrestado);
                 break;
             case 0:
                 delete(estudiante);

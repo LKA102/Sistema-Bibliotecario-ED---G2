@@ -12,7 +12,9 @@
 
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
-#define LISTA_REGISTRADOS "LibrosDisponibles.csv"
+#define LISTA_DISPONIBLES "LibrosDisponibles.csv"
+#define LISTA_SOLICITADOS "LibrosSolicitados.csv"
+#define LISTA_PRESTADOS "LibrosPrestados.csv"
 
 
 using namespace std;
@@ -44,7 +46,6 @@ struct LibrosDisponibles{
 };
 typedef LibrosDisponibles* bookListRegister;
 
-//Lista de libros disponibles
 
 
 
@@ -55,6 +56,15 @@ struct LibrosSolicitados{
     struct LibrosSolicitados* sgt = NULL;
 };
 typedef LibrosSolicitados* bookListRequest;
+
+
+struct LibrosPrestados{
+    string libro;
+    Student student = new (struct Estudiante);
+    struct LibrosPrestados* sgt = NULL;
+};
+typedef LibrosPrestados* bookListLent;
+
 
 
 //Funciones Sistema
@@ -79,5 +89,6 @@ void RegistrarLibroArchivo(bookListRegister &listaDisponible);
 //Funciones Estudiante
 
 void buscarLibro();
-void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
+void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
 void actualizarListaEstudiantes(Student estudiante);
+void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado);

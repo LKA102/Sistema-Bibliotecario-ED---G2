@@ -2,6 +2,7 @@
 extern Student estudiante;
 extern bookListRegister listaDisponible;
 extern bookListRequest listaSolicitado;
+extern bookListLent listaPrestado;
 
 void buscarLibro(){
 
@@ -14,7 +15,7 @@ void buscarLibro(){
     system("pause");
 }
 
-void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado){
+void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado){
     
     bookListRegister aux1 = listaDisponible;
     bookListRequest aux2 = listaSolicitado;
@@ -38,31 +39,62 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
         }
         if (encontrado){
             if (listaSolicitado == NULL){
-                nuevo->libro = aux1->libro.titulo;
-                nuevo->student->nombre = estudiante->nombre; 
-                nuevo->student->correo = estudiante->correo; 
-                nuevo->student->codigo = estudiante->codigo;
-                listaSolicitado = nuevo; 
-                estudiante->librosSolicitados[0] = aux1->libro.titulo;
-                estudiante->librosSolicitados[1] = "ESPERA";
-                actualizarListaEstudiantes(estudiante);
-
+                if (estudiante->librosSolicitados[1] != "ESPERA"){
+                    nuevo->libro = aux1->libro.titulo;
+                    nuevo->student->nombre = estudiante->nombre; 
+                    nuevo->student->correo = estudiante->correo; 
+                    nuevo->student->codigo = estudiante->codigo;
+                    listaSolicitado = nuevo; 
+                    estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                    estudiante->librosSolicitados[1] = "ESPERA";
+                    actualizarListaEstudiantes(estudiante);
+                    RegistrarSolicitudArchivo(listaSolicitado);
+                }
+                else{
+                    cout<<"Ya tiene un solicitud de libro en espera"<<endl;
+                    system("pause");
+                }
             }
             else{
                 while (aux2->sgt!=NULL)
                     aux2 = aux2->sgt;
-                nuevo->libro = aux1->libro.autor;
-                nuevo->student->nombre = estudiante->nombre; 
-                nuevo->student->correo = estudiante->correo; 
-                nuevo->student->codigo = estudiante->codigo;
-                aux2->sgt = nuevo;
-                estudiante->librosSolicitados[0] = aux1->libro.titulo;
-                estudiante->librosSolicitados[1] = "ESPERA";
-                actualizarListaEstudiantes(estudiante);
+                 if(estudiante->librosSolicitados[1] != "ESPERA"){
+                    nuevo->libro = aux1->libro.titulo;
+                    nuevo->student->nombre = estudiante->nombre; 
+                    nuevo->student->correo = estudiante->correo; 
+                    nuevo->student->codigo = estudiante->codigo;
+                    aux2->sgt = nuevo;
+                    estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                    estudiante->librosSolicitados[1] = "ESPERA";
+                    actualizarListaEstudiantes(estudiante);
+                    RegistrarSolicitudArchivo(listaSolicitado);
+                }
+                else{
+                    cout<<"Ya tiene un solicitud de libro en espera"<<endl;
+                    system("pause");
+                }
             }
         }
         else{
             cout<<"El libro no existe o no esta disponible"<<endl;
         }
+    }
+}
+
+void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado){
+    bookListRequest aux = listaSolicitado;
+    ofstream archivo (LISTA_SOLICITADOS);
+    if(archivo.is_open()){
+        while (aux->sgt!=NULL){
+            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+            aux = aux->sgt;
+        }
+        archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+        aux = aux->sgt;
+
+        archivo.close();
+    }
+    else{
+        cout<<"Hubo problemas para abrir archivo"<<endl;
     }
 }

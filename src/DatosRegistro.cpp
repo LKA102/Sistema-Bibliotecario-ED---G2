@@ -1,9 +1,10 @@
 #include "Funciones.h"
 extern Student estudiante;
 extern bookListRegister listaDisponible;
+extern bookListRequest listaSolicitado;
+extern bookListLent listaPrestado;
 
 
-using namespace std;
 
 int ingresarSistemaBibliotecario(string usu, string pas){
     int flag = 0;
@@ -38,22 +39,24 @@ int ingresarSistemaEstudiante(string cod){
     ifstream archivo(NOMBRE_ESTUDIANTE);
     string linea;
     char delimitador = ',';
-    while (getline(archivo, linea)){
-        stringstream stream(linea);
-        string codE;
-        getline(stream, codE, delimitador);
-        if(cod == codE){
-            estudiante = new (struct Estudiante);
-            estudiante->codigo = codE;
-            getline(stream, estudiante->nombre, delimitador);
-            getline(stream, estudiante->correo, delimitador);
-            getline(stream, estudiante->librosSolicitados[0], delimitador);
-            getline(stream, estudiante->librosSolicitados[1], delimitador);
-            flag = 1;
-            break;
+    if (archivo.is_open()){
+        while (getline(archivo, linea)){
+            stringstream stream(linea);
+            string codE;
+            getline(stream, codE, delimitador);
+            if(cod == codE){
+                estudiante = new (struct Estudiante);
+                estudiante->codigo = codE;
+                getline(stream, estudiante->nombre, delimitador);
+                getline(stream, estudiante->correo, delimitador);
+                getline(stream, estudiante->librosSolicitados[0], delimitador);
+                getline(stream, estudiante->librosSolicitados[1], delimitador);
+                flag = 1;
+                break;
+            }
         }
+        archivo.close();
     }
-    archivo.close();
     return flag;
 }
 

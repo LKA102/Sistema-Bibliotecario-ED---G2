@@ -3,6 +3,7 @@
  Student estudiante = NULL;
  bookListRegister listaDisponible = NULL;
  bookListRequest listaSolicitado = NULL;
+ bookListLent listaPrestado = NULL;
 
 
 int main(){
