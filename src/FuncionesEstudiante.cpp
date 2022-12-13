@@ -8,6 +8,7 @@ void buscarLibro(){
 
     system("cls");
     bookListRegister p = listaDisponible;
+    cout<<"LISTA DE LIBROS DISPONIBLES"<<endl;
     while( p != NULL){
 		cout<<p->libro.autor<<" "<<p->libro.titulo<<" "<<p->libro.anio_publicacion<<" "<<p->libro.num_paginas<<" "<<endl;
 		p=p->sgt;
@@ -15,7 +16,7 @@ void buscarLibro(){
     system("pause");
 }
 
-void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado){
+void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado){
     
     bookListRegister aux1 = listaDisponible;
     bookListRequest aux2 = listaSolicitado;
@@ -49,6 +50,8 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     RegistrarSolicitudArchivo(listaSolicitado);
+                    //EliminarLibroDisponible()
+                    //actualizarListaLibroDisponible()
                 }
                 else{
                     cout<<"Ya tiene un solicitud de libro en espera"<<endl;
@@ -68,6 +71,8 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     RegistrarSolicitudArchivo(listaSolicitado);
+                    //EliminarLibroDisponible()
+                    //actualizarArchivoLibroDisponible()
                 }
                 else{
                     cout<<"Ya tiene un solicitud de libro en espera"<<endl;

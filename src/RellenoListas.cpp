@@ -74,3 +74,38 @@ void actualizarListaEstudiantes(Student estudiante){
         system("pause");
     }
 }
+
+void rellenarListaSolicitado (bookListRequest &listaSolicitado){
+    bookListRequest aux = NULL;
+    ifstream archivo (LISTA_SOLICITADOS);
+    string linea;
+    char delimitador = ',';
+    if (archivo.is_open()){
+        while (getline(archivo, linea)){
+            stringstream stream(linea);
+            if (listaSolicitado == NULL){
+                listaSolicitado = new (struct LibrosSolicitados);
+                getline(stream, listaSolicitado->libro,delimitador);
+                getline(stream, listaSolicitado->student->codigo,delimitador);
+                getline(stream, listaSolicitado->student->nombre,delimitador);
+                getline(stream, listaSolicitado->student->correo,delimitador);
+                aux = listaSolicitado;
+            }
+            else{
+            aux -> sgt = new (struct LibrosSolicitados);
+            getline(stream, aux->sgt->libro,delimitador);
+            getline(stream, aux->sgt->student->codigo,delimitador);
+            getline(stream, aux->sgt->student->nombre,delimitador);
+            getline(stream, aux->sgt->student->correo,delimitador);
+            aux = aux->sgt;
+            }
+
+        }
+    }
+    archivo.close();
+}
+
+//rellenarListaLibroPrestado();
+//actualizarArchivoDisponible();
+//actualizarArchivoSolicitado();
+//actualizarArchivoPrestado();

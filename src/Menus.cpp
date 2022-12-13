@@ -28,6 +28,9 @@ void sistemaBibliotecario(){
                 RegistrarLibro(listaDisponible);
                 RegistrarLibroArchivo(listaDisponible);
                 break;
+            case 2:
+                system("cls");
+                analizarSolicitud(listaDisponible, listaSolicitado, listaPrestado);
             
                
         } 
@@ -48,7 +51,7 @@ void sistemaEstudiante(){
                 buscarLibro();
                 break;
             case 2:
-                SolicitarLibro(listaDisponible, listaSolicitado, listaPrestado);
+                SolicitarLibro(listaDisponible, listaSolicitado);
                 break;
             case 0:
                 delete(estudiante);

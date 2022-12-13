@@ -10,6 +10,7 @@ int main(){
     int opc, opcEst, opcReg;
     string nomUsu,pasUsu,codEst,nomEst,corEst;
     rellenarListaRegistrados(listaDisponible);
+    rellenarListaSolicitado(listaSolicitado);
     do{
         menuPrincipal();
         cin>>opc;
