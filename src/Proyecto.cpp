@@ -9,7 +9,7 @@
 int main(){
     int opc, opcEst, opcReg;
     string nomUsu,pasUsu,codEst,nomEst,corEst;
-    rellenarListaRegistrados(listaDisponible);
+    rellenarListaDisponible(listaDisponible);
     rellenarListaSolicitado(listaSolicitado);
     do{
         menuPrincipal();

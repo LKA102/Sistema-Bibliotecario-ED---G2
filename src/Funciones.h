@@ -79,14 +79,14 @@ int ingresarSistemaEstudiante(std::string);
 void registrarEstudiante(std::string,std::string,std::string);
 
 //Funciones automaticas 
-void rellenarListaRegistrados(bookListRegister &listaDisponible);
+void rellenarListaDisponible(bookListRegister &listaDisponible);
 void rellenarListaSolicitado (bookListRequest &listaSolicitado);
+void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible);
 
 //Funciones Bibliotecario
 void menuBibliotecario();
 bookListRegister crearNodo ();
 void RegistrarLibro(bookListRegister &listaDisponible);
-void RegistrarLibroArchivo(bookListRegister &listaDisponible);
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
 
 //Funciones Estudiante
@@ -96,5 +96,7 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
 void actualizarListaEstudiantes(Student estudiante);
 void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado);
 
-//VerListas
+//ManejoListas
 void verSolicitudes (bookListRequest &listaSolicitado);
+void verPrestados (bookListLent &listaPrestado);
+void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);

@@ -50,8 +50,8 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     RegistrarSolicitudArchivo(listaSolicitado);
-                    //EliminarLibroDisponible()
-                    //actualizarListaLibroDisponible()
+                    EliminarLibroDisponible(nuevo, listaDisponible);
+                    ActualizarLibroDisponibleArchivo(listaDisponible);
                 }
                 else{
                     cout<<"Ya tiene un solicitud de libro en espera"<<endl;
@@ -71,8 +71,8 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     RegistrarSolicitudArchivo(listaSolicitado);
-                    //EliminarLibroDisponible()
-                    //actualizarArchivoLibroDisponible()
+                    EliminarLibroDisponible(nuevo, listaDisponible);
+                    ActualizarLibroDisponibleArchivo(listaDisponible);
                 }
                 else{
                     cout<<"Ya tiene un solicitud de libro en espera"<<endl;

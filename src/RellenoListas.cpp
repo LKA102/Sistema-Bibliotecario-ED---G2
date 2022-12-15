@@ -4,7 +4,7 @@ extern bookListRegister listaDisponible;
 extern bookListRequest listaSolicitado;
 extern bookListLent listaPrestado;
 
-void rellenarListaRegistrados(bookListRegister &listaDisponible){
+void rellenarListaDisponible(bookListRegister &listaDisponible){
     bookListRegister aux = NULL;
     ifstream archivo (LISTA_DISPONIBLES);
     string linea, anio, paginas;
@@ -105,7 +105,28 @@ void rellenarListaSolicitado (bookListRequest &listaSolicitado){
     archivo.close();
 }
 
+
+void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible){
+    bookListRegister aux = listaDisponible;
+    ofstream archivo (LISTA_DISPONIBLES);
+    if (archivo.is_open()){
+        while (aux->sgt!=NULL){
+            archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
+            aux = aux->sgt;
+        }
+        archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
+        aux = aux->sgt;
+
+        archivo.close();
+    }
+    else{
+        cout<<"Hubo problemas para abrir archivo"<<endl;
+    }
+    
+
+}
+
 //rellenarListaLibroPrestado();
-//actualizarArchivoDisponible();
+
 //actualizarArchivoSolicitado();
 //actualizarArchivoPrestado();

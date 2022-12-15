@@ -47,47 +47,31 @@ void RegistrarLibro(bookListRegister &listaDisponible){
     system("pause");
 }
 
-void RegistrarLibroArchivo(bookListRegister &listaDisponible){
-    bookListRegister aux = listaDisponible;
-    ofstream archivo (LISTA_DISPONIBLES);
-    if (archivo.is_open()){
-        while (aux->sgt!=NULL){
-            archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
-            aux = aux->sgt;
-        }
-        archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
-        aux = aux->sgt;
 
-        archivo.close();
-    }
-    else{
-        cout<<"Hubo problemas para abrir archivo"<<endl;
-    }
-    
-
-}
 
 
 
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado){
     verSolicitudes(listaSolicitado);
     bool encontrado = false;
-    bookListRequest auxR = listaSolicitado;
+    bookListRequest auxR = listaSolicitado, auxR2 = NULL;
     if (listaSolicitado == NULL)
         cout<<"No existe ningun registro de solicitud"<<endl;
     else{
         cin.ignore(255, '\n');
         string libroSolicitado, libroEnLista;
         cout<<"Escriba el nombre del libro a analizar"; getline(cin,libroSolicitado);
+        transform(libroSolicitado.begin(), libroSolicitado.end(), libroSolicitado.begin(), ::toupper);
         while (auxR != NULL){
+            //Para eliminar el nodo de la lista de solicitudes, hacer lo mismo que hiciste en la lista Disponible con aux1 y aux2
+            auxR2 = auxR;
             libroEnLista = auxR->libro;
-            transform(libroSolicitado.begin(), libroSolicitado.end(), libroSolicitado.begin(), ::toupper);
+            auxR = auxR->sgt;
             transform(libroEnLista.begin(), libroEnLista.end(), libroEnLista.begin(), ::toupper);
             if (libroSolicitado == libroEnLista){
                 encontrado = true;
                 break;
             }
-            auxR = auxR->sgt;
         }
         if (encontrado){
             unsigned opc;

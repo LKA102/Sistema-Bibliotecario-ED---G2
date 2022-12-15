@@ -26,7 +26,7 @@ void sistemaBibliotecario(){
             case 1:
                 system("cls");
                 RegistrarLibro(listaDisponible);
-                RegistrarLibroArchivo(listaDisponible);
+                ActualizarLibroDisponibleArchivo(listaDisponible);
                 break;
             case 2:
                 system("cls");
@@ -74,7 +74,7 @@ void menuEstudiante(){
 void menuEstudiante2(){
     system("cls");
     cout<<"Sistema bibliotecario del estudiante"<<endl;
-    cout<<"1.- Buscar Libro"<<endl;
+    cout<<"1.- Buscar Libros Disponibles"<<endl;
     cout<<"2.- Solicitar Libro"<<endl;
     cout<<"0.- volver"<<endl;
 }

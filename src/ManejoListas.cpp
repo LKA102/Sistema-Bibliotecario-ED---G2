@@ -25,5 +25,28 @@ while (aux != NULL){
 system("pause");
 }
 
-//EliminarLibroDisponible();
+
+void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible){
+    string nombreLibro = LibroEliminar->libro;
+    bookListRegister aux = listaDisponible, aux2 = NULL;
+    while (aux->libro.titulo != nombreLibro){
+        aux2 = aux;
+        aux = aux->sgt;
+    }
+    if (aux2==NULL){
+        if (aux->sgt == NULL){
+            delete(aux);
+            listaDisponible = NULL;
+        }
+        else{
+            listaDisponible = aux->sgt;
+            delete(aux);
+        }
+    }
+    else{
+        aux2->sgt = aux->sgt;
+        delete(aux);
+    }
+}
+
 //TrasladarLibroSolicitudAPrestado()
