@@ -49,4 +49,26 @@ void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &l
     }
 }
 
-//TrasladarLibroSolicitudAPrestado()
+void TrasladarLibroSolicitudAPrestado(bookListRequest &LibroSolicitudEliminar, bookListLent &listaPrestado){
+    bookListLent p = listaPrestado;
+    if (listaPrestado == NULL){
+        listaPrestado = (bookListLent)LibroSolicitudEliminar;
+    }
+    else{
+        while (p->sgt != NULL)
+            p = p->sgt;
+        p->sgt = (bookListLent)LibroSolicitudEliminar;
+
+    }
+}
+
+void EliminarLibroSolicitud(bookListRequest &LibroAnterior, bookListRequest &LibroActual, bookListRequest &listaSolicitado){
+    if (LibroAnterior == NULL){
+        listaSolicitado = listaSolicitado->sgt;
+        LibroActual->sgt = NULL;
+    }
+    else{
+        LibroAnterior->sgt = LibroActual->sgt;
+        LibroActual->sgt = NULL;
+    }
+}

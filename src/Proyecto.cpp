@@ -6,6 +6,8 @@
  bookListLent listaPrestado = NULL;
 
 
+
+
 int main(){
     int opc, opcEst, opcReg;
     string nomUsu,pasUsu,codEst,nomEst,corEst;

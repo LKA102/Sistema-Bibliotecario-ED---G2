@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
-#include <algorithm>
 
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
@@ -100,3 +99,5 @@ void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado);
 void verSolicitudes (bookListRequest &listaSolicitado);
 void verPrestados (bookListLent &listaPrestado);
 void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
+void TrasladarLibroSolicitudAPrestado(bookListRequest &LibroSolicitudEliminar, bookListLent &listaPrestado);
+void EliminarLibroSolicitud(bookListRequest &LibroAnterior, bookListRequest &LibroActual, bookListRequest &listaSolicitado);

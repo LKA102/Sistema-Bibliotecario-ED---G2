@@ -110,12 +110,10 @@ void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible){
     bookListRegister aux = listaDisponible;
     ofstream archivo (LISTA_DISPONIBLES);
     if (archivo.is_open()){
-        while (aux->sgt!=NULL){
+        while (aux!=NULL){
             archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
             aux = aux->sgt;
         }
-        archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
-        aux = aux->sgt;
 
         archivo.close();
     }

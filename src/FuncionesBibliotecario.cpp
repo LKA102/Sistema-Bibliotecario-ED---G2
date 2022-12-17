@@ -60,35 +60,41 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
     else{
         cin.ignore(255, '\n');
         string libroSolicitado, libroEnLista;
-        cout<<"Escriba el nombre del libro a analizar"; getline(cin,libroSolicitado);
-        transform(libroSolicitado.begin(), libroSolicitado.end(), libroSolicitado.begin(), ::toupper);
+        cout<<"Escriba el nombre del libro a analizar"<<endl; getline(cin,libroSolicitado);
+        for (auto & c: libroSolicitado) 
+            c = toupper(c);
         while (auxR != NULL){
             //Para eliminar el nodo de la lista de solicitudes, hacer lo mismo que hiciste en la lista Disponible con aux1 y aux2
-            auxR2 = auxR;
             libroEnLista = auxR->libro;
-            auxR = auxR->sgt;
-            transform(libroEnLista.begin(), libroEnLista.end(), libroEnLista.begin(), ::toupper);
+            for (auto & c: libroEnLista) 
+                c = toupper(c);
             if (libroSolicitado == libroEnLista){
                 encontrado = true;
                 break;
             }
+            auxR2 = auxR;
+            auxR = auxR->sgt;
         }
         if (encontrado){
             unsigned opc;
             cout<<"Presione [1] para Aceptar Solicitud o [2] para Rechazar Solicitud"<<endl;
-           /* switch (opc){
+            cin>>opc;
+            switch (opc){
             case 1:
+                EliminarLibroSolicitud(auxR2, auxR, listaSolicitado);
+                TrasladarLibroSolicitudAPrestado(auxR, listaPrestado);
                 //Trasladar nodo auxR a la lista de libros Prestados (modificar listaLibroSolicitado para ello)
-                //Actualiza estado de la solicitud de libro del estudiante que lo solicito
+                /*//Actualiza estado de la solicitud de libro del estudiante que lo solicito
                 //Actualizar archivos csv de las listas
                 //Mostrar mensaje que ya se aceptó el préstamo
                 break;
-            }
+            
             case 2:
                 //Se elimina el nodo auxR de la lista de libros solicitados
                 //Actaliza estado de la solicitud de libro deñ estudiante
                 //Actualizar archivos csv de las listas (solo solicitados)
                 //Mostrar mensaje que ya se rechazó el prestamo*/
+            }
         }
         else{
             cout<<"El libro no se encuentra en la lista de solicitudes"<<endl;
