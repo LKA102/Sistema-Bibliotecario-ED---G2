@@ -105,6 +105,36 @@ void rellenarListaSolicitado (bookListRequest &listaSolicitado){
     archivo.close();
 }
 
+void rellenarListaPrestado (bookListLent &listaPrestado){
+    bookListLent aux = NULL;
+    ifstream archivo (LISTA_SOLICITADOS);
+    string linea;
+    char delimitador = ',';
+    if (archivo.is_open()){
+        while (getline(archivo, linea)){
+            stringstream stream(linea);
+            if (listaPrestado == NULL){
+                listaPrestado = new (struct LibrosPrestados);
+                getline(stream, listaSolicitado->libro,delimitador);
+                getline(stream, listaSolicitado->student->codigo,delimitador);
+                getline(stream, listaSolicitado->student->nombre,delimitador);
+                getline(stream, listaSolicitado->student->correo,delimitador);
+                aux = listaPrestado;
+            }
+            else{
+            aux -> sgt = new (struct LibrosPrestados);
+            getline(stream, aux->sgt->libro,delimitador);
+            getline(stream, aux->sgt->student->codigo,delimitador);
+            getline(stream, aux->sgt->student->nombre,delimitador);
+            getline(stream, aux->sgt->student->correo,delimitador);
+            aux = aux->sgt;
+            }
+
+        }
+    }
+    archivo.close();
+}
+
 
 void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible){
     bookListRegister aux = listaDisponible;
@@ -124,7 +154,36 @@ void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible){
 
 }
 
-//rellenarListaLibroPrestado();
+void ActualizarLibroSolicitadoArchivo(bookListRequest &listaSolicitado){
+    bookListRequest aux = listaSolicitado;
+    ofstream archivo (LISTA_SOLICITADOS);
+    if(archivo.is_open()){
+        while (aux!=NULL){
+            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+            aux = aux->sgt;
+        }
 
-//actualizarArchivoSolicitado();
-//actualizarArchivoPrestado();
+        archivo.close();
+    }
+    else{
+        cout<<"Hubo problemas para abrir archivo"<<endl;
+    }
+}
+
+
+
+void ActualizarLibroPrestadoArchivo(bookListLent &listaPrestado){
+    bookListLent aux = listaPrestado;
+    ofstream archivo (LISTA_PRESTADOS);
+    if(archivo.is_open()){
+        while (aux!=NULL){
+            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+            aux = aux->sgt;
+        }
+
+        archivo.close();
+    }
+    else{
+        cout<<"Hubo problemas para abrir archivo"<<endl;
+    }
+}

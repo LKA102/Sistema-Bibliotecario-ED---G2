@@ -13,6 +13,7 @@ int main(){
     string nomUsu,pasUsu,codEst,nomEst,corEst;
     rellenarListaDisponible(listaDisponible);
     rellenarListaSolicitado(listaSolicitado);
+    rellenarListaPrestado(listaPrestado);
     do{
         menuPrincipal();
         cin>>opc;

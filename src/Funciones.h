@@ -80,7 +80,10 @@ void registrarEstudiante(std::string,std::string,std::string);
 //Funciones automaticas 
 void rellenarListaDisponible(bookListRegister &listaDisponible);
 void rellenarListaSolicitado (bookListRequest &listaSolicitado);
+void rellenarListaPrestado (bookListLent &listaPrestado);
 void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible);
+void ActualizarLibroSolicitadoArchivo(bookListRequest &listaSolicitado);
+void ActualizarLibroPrestadoArchivo(bookListLent &listaPrestado);
 
 //Funciones Bibliotecario
 void menuBibliotecario();
@@ -93,7 +96,6 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
 void buscarLibro();
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
 void actualizarListaEstudiantes(Student estudiante);
-void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado);
 
 //ManejoListas
 void verSolicitudes (bookListRequest &listaSolicitado);

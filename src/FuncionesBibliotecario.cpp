@@ -48,9 +48,6 @@ void RegistrarLibro(bookListRegister &listaDisponible){
 }
 
 
-
-
-
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado){
     verSolicitudes(listaSolicitado);
     bool encontrado = false;
@@ -83,17 +80,38 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
             case 1:
                 EliminarLibroSolicitud(auxR2, auxR, listaSolicitado);
                 TrasladarLibroSolicitudAPrestado(auxR, listaPrestado);
+                ActualizarLibroSolicitadoArchivo(listaSolicitado);
+                ActualizarLibroPrestadoArchivo(listaPrestado);
+                estudiante = auxR->student;
+                estudiante->librosSolicitados[0] = auxR->libro;
+                estudiante->librosSolicitados[1] = "ACEPTADO";
+                actualizarListaEstudiantes(estudiante);
+                estudiante = NULL;
+                cout<<"Solicitud aceptada"<<endl;
+                system("pause");
+                break;
                 //Trasladar nodo auxR a la lista de libros Prestados (modificar listaLibroSolicitado para ello)
                 /*//Actualiza estado de la solicitud de libro del estudiante que lo solicito
                 //Actualizar archivos csv de las listas
                 //Mostrar mensaje que ya se aceptó el préstamo
-                break;
+                break;*/
             
             case 2:
+                EliminarLibroSolicitud(auxR2, auxR, listaSolicitado);
+                ActualizarLibroSolicitadoArchivo(listaSolicitado);
+                estudiante = auxR->student;
+                estudiante->librosSolicitados[0] = auxR->libro;
+                estudiante->librosSolicitados[1] = "RECHAZADO";
+                actualizarListaEstudiantes(estudiante);
+                estudiante = NULL;
+                delete(auxR);
+                cout<<"Solicitud rechazada"<<endl;
+                system("pause");
+                break;
                 //Se elimina el nodo auxR de la lista de libros solicitados
                 //Actaliza estado de la solicitud de libro deñ estudiante
                 //Actualizar archivos csv de las listas (solo solicitados)
-                //Mostrar mensaje que ya se rechazó el prestamo*/
+                //Mostrar mensaje que ya se rechazó el prestamo
             }
         }
         else{

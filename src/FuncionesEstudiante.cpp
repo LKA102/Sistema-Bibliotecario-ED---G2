@@ -49,7 +49,7 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[0] = aux1->libro.titulo;
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
-                    RegistrarSolicitudArchivo(listaSolicitado);
+                    ActualizarLibroSolicitadoArchivo(listaSolicitado);
                     EliminarLibroDisponible(nuevo, listaDisponible);
                     ActualizarLibroDisponibleArchivo(listaDisponible);
                 }
@@ -70,7 +70,7 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                     estudiante->librosSolicitados[0] = aux1->libro.titulo;
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
-                    RegistrarSolicitudArchivo(listaSolicitado);
+                    ActualizarLibroSolicitadoArchivo(listaSolicitado);
                     EliminarLibroDisponible(nuevo, listaDisponible);
                     ActualizarLibroDisponibleArchivo(listaDisponible);
                 }
@@ -86,20 +86,4 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
     }
 }
 
-void RegistrarSolicitudArchivo(bookListRequest &listaSolicitado){
-    bookListRequest aux = listaSolicitado;
-    ofstream archivo (LISTA_SOLICITADOS);
-    if(archivo.is_open()){
-        while (aux->sgt!=NULL){
-            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
-            aux = aux->sgt;
-        }
-        archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
-        aux = aux->sgt;
 
-        archivo.close();
-    }
-    else{
-        cout<<"Hubo problemas para abrir archivo"<<endl;
-    }
-}
