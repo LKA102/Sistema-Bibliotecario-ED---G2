@@ -53,6 +53,8 @@ void sistemaEstudiante(){
             case 2:
                 SolicitarLibro(listaDisponible, listaSolicitado);
                 break;
+            case 3:
+                verEstadoSolicitud();
             case 0:
                 delete(estudiante);
                 estudiante = NULL;

@@ -20,13 +20,13 @@ bookListRegister crearNodo (){
     bookListRegister nuevo = new (struct LibrosDisponibles);
     cin.ignore(255, '\n');
     cout<<"Introduzca el nombre del autor del libro"<<endl;
-    getline(cin, nuevo->libro.autor);
+    getline(cin, nuevo->libro->autor);
     cout<<"Introduzca el titulo del libro"<<endl;
-    getline(cin, nuevo->libro.titulo);
+    getline(cin, nuevo->libro->titulo);
     cout<<"Introduzca el anio de publicacion"<<endl;
-    cin>>nuevo->libro.anio_publicacion;
+    cin>>nuevo->libro->anio_publicacion;
     cout<<"Introduzca la cantidad de paginas del libro"<<endl;
-    cin>>nuevo->libro.num_paginas;
+    cin>>nuevo->libro->num_paginas;
     return nuevo;
 }
 
@@ -62,7 +62,7 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
             c = toupper(c);
         while (auxR != NULL){
             //Para eliminar el nodo de la lista de solicitudes, hacer lo mismo que hiciste en la lista Disponible con aux1 y aux2
-            libroEnLista = auxR->libro;
+            libroEnLista = auxR->libro->titulo;
             for (auto & c: libroEnLista) 
                 c = toupper(c);
             if (libroSolicitado == libroEnLista){
@@ -83,7 +83,7 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
                 ActualizarLibroSolicitadoArchivo(listaSolicitado);
                 ActualizarLibroPrestadoArchivo(listaPrestado);
                 estudiante = auxR->student;
-                estudiante->librosSolicitados[0] = auxR->libro;
+                estudiante->librosSolicitados[0] = auxR->libro->titulo;
                 estudiante->librosSolicitados[1] = "ACEPTADO";
                 actualizarListaEstudiantes(estudiante);
                 estudiante = NULL;
@@ -100,7 +100,7 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
                 EliminarLibroSolicitud(auxR2, auxR, listaSolicitado);
                 ActualizarLibroSolicitadoArchivo(listaSolicitado);
                 estudiante = auxR->student;
-                estudiante->librosSolicitados[0] = auxR->libro;
+                estudiante->librosSolicitados[0] = auxR->libro->titulo;
                 estudiante->librosSolicitados[1] = "RECHAZADO";
                 actualizarListaEstudiantes(estudiante);
                 estudiante = NULL;

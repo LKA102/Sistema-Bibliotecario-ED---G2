@@ -8,7 +8,7 @@ void verSolicitudes (bookListRequest &listaSolicitado){
 bookListRequest aux = listaSolicitado;
 cout<<"LISTA DE LIBROS SOLICITADOS"<<endl;
 while (aux != NULL){
-    cout<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+    cout<<aux->libro->titulo<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
     aux = aux->sgt;
 }
 system("pause");
@@ -19,7 +19,7 @@ void verPrestados (bookListLent &listaPrestado){
 bookListLent aux = listaPrestado;
 cout<<"LISTA DE LIBROS PRESTADOS"<<endl;
 while (aux != NULL){
-    cout<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+    cout<<aux->libro->titulo<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
     aux = aux->sgt;
 }
 system("pause");
@@ -27,9 +27,9 @@ system("pause");
 
 
 void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible){
-    string nombreLibro = LibroEliminar->libro;
+    Libro nombreLibro = LibroEliminar->libro;
     bookListRegister aux = listaDisponible, aux2 = NULL;
-    while (aux->libro.titulo != nombreLibro){
+    while (aux->libro != nombreLibro){
         aux2 = aux;
         aux = aux->sgt;
     }

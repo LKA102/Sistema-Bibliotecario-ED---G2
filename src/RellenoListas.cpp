@@ -14,22 +14,22 @@ void rellenarListaDisponible(bookListRegister &listaDisponible){
             stringstream stream(linea);
             if (listaDisponible == NULL){
                 listaDisponible = new (struct LibrosDisponibles);
-                getline(stream, listaDisponible->libro.autor,delimitador);
-                getline(stream, listaDisponible->libro.titulo,delimitador);
+                getline(stream, listaDisponible->libro->autor,delimitador);
+                getline(stream, listaDisponible->libro->titulo,delimitador);
                 getline(stream, anio,delimitador);
                 getline(stream, paginas,delimitador);
-                listaDisponible->libro.anio_publicacion = std::stoi(anio);
-                listaDisponible->libro.num_paginas = std::stoi(paginas);
+                listaDisponible->libro->anio_publicacion = std::stoi(anio);
+                listaDisponible->libro->num_paginas = std::stoi(paginas);
                 aux = listaDisponible;
             }
             else{
             aux -> sgt = new (struct LibrosDisponibles);
-            getline(stream, aux->sgt->libro.autor,delimitador);
-            getline(stream, aux->sgt->libro.titulo,delimitador);
+            getline(stream, aux->sgt->libro->autor,delimitador);
+            getline(stream, aux->sgt->libro->titulo,delimitador);
             getline(stream, anio,delimitador);
             getline(stream, paginas,delimitador);
-            aux->sgt->libro.anio_publicacion = std::stoi(anio);
-            aux->sgt->libro.num_paginas = std::stoi(paginas);
+            aux->sgt->libro->anio_publicacion = std::stoi(anio);
+            aux->sgt->libro->num_paginas = std::stoi(paginas);
             aux = aux->sgt;
             }
 
@@ -78,25 +78,35 @@ void actualizarListaEstudiantes(Student estudiante){
 void rellenarListaSolicitado (bookListRequest &listaSolicitado){
     bookListRequest aux = NULL;
     ifstream archivo (LISTA_SOLICITADOS);
-    string linea;
+    string linea, anio, paginas;
     char delimitador = ',';
     if (archivo.is_open()){
         while (getline(archivo, linea)){
             stringstream stream(linea);
             if (listaSolicitado == NULL){
                 listaSolicitado = new (struct LibrosSolicitados);
-                getline(stream, listaSolicitado->libro,delimitador);
+                getline(stream, listaSolicitado->libro->autor,delimitador);
+                getline(stream, listaSolicitado->libro->titulo,delimitador);
+                getline(stream, anio,delimitador);
+                getline(stream, paginas,delimitador);
                 getline(stream, listaSolicitado->student->codigo,delimitador);
                 getline(stream, listaSolicitado->student->nombre,delimitador);
                 getline(stream, listaSolicitado->student->correo,delimitador);
+                listaSolicitado->libro->anio_publicacion = std::stoi(anio);
+                listaSolicitado->libro->num_paginas = std::stoi(paginas);
                 aux = listaSolicitado;
             }
             else{
             aux -> sgt = new (struct LibrosSolicitados);
-            getline(stream, aux->sgt->libro,delimitador);
+            getline(stream, aux->sgt->libro->autor,delimitador);
+            getline(stream, aux->sgt->libro->titulo,delimitador);
+            getline(stream, anio,delimitador);
+            getline(stream, paginas,delimitador);
             getline(stream, aux->sgt->student->codigo,delimitador);
             getline(stream, aux->sgt->student->nombre,delimitador);
             getline(stream, aux->sgt->student->correo,delimitador);
+            aux->sgt->libro->anio_publicacion = std::stoi(anio);
+            aux->sgt->libro->num_paginas = std::stoi(paginas);
             aux = aux->sgt;
             }
 
@@ -108,25 +118,35 @@ void rellenarListaSolicitado (bookListRequest &listaSolicitado){
 void rellenarListaPrestado (bookListLent &listaPrestado){
     bookListLent aux = NULL;
     ifstream archivo (LISTA_SOLICITADOS);
-    string linea;
+    string linea, anio, paginas;
     char delimitador = ',';
     if (archivo.is_open()){
         while (getline(archivo, linea)){
             stringstream stream(linea);
             if (listaPrestado == NULL){
                 listaPrestado = new (struct LibrosPrestados);
-                getline(stream, listaSolicitado->libro,delimitador);
-                getline(stream, listaSolicitado->student->codigo,delimitador);
-                getline(stream, listaSolicitado->student->nombre,delimitador);
-                getline(stream, listaSolicitado->student->correo,delimitador);
+                getline(stream, listaPrestado->libro->autor,delimitador);
+                getline(stream, listaPrestado->libro->titulo,delimitador);
+                getline(stream, anio,delimitador);
+                getline(stream, paginas,delimitador);
+                getline(stream, listaPrestado->student->codigo,delimitador);
+                getline(stream, listaPrestado->student->nombre,delimitador);
+                getline(stream, listaPrestado->student->correo,delimitador);
+                listaPrestado->libro->anio_publicacion = std::stoi(anio);
+                listaPrestado->libro->num_paginas = std::stoi(paginas);
                 aux = listaPrestado;
             }
             else{
             aux -> sgt = new (struct LibrosPrestados);
-            getline(stream, aux->sgt->libro,delimitador);
+            getline(stream, aux->sgt->libro->autor,delimitador);
+            getline(stream, aux->sgt->libro->titulo,delimitador);
+            getline(stream, anio,delimitador);
+            getline(stream, paginas,delimitador);
             getline(stream, aux->sgt->student->codigo,delimitador);
             getline(stream, aux->sgt->student->nombre,delimitador);
             getline(stream, aux->sgt->student->correo,delimitador);
+            aux->sgt->libro->anio_publicacion = std::stoi(anio);
+            aux->sgt->libro->num_paginas = std::stoi(paginas);
             aux = aux->sgt;
             }
 
@@ -141,7 +161,7 @@ void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible){
     ofstream archivo (LISTA_DISPONIBLES);
     if (archivo.is_open()){
         while (aux!=NULL){
-            archivo<<aux->libro.autor<<","<<aux->libro.titulo<<","<<aux->libro.anio_publicacion<<","<<aux->libro.num_paginas<<endl;
+            archivo<<aux->libro->autor<<","<<aux->libro->titulo<<","<<aux->libro->anio_publicacion<<","<<aux->libro->num_paginas<<endl;
             aux = aux->sgt;
         }
 
@@ -159,7 +179,7 @@ void ActualizarLibroSolicitadoArchivo(bookListRequest &listaSolicitado){
     ofstream archivo (LISTA_SOLICITADOS);
     if(archivo.is_open()){
         while (aux!=NULL){
-            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+            archivo<<aux->libro->autor<<","<<aux->libro->titulo<<","<<aux->libro->anio_publicacion<<","<<aux->libro->num_paginas<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
             aux = aux->sgt;
         }
 
@@ -177,7 +197,7 @@ void ActualizarLibroPrestadoArchivo(bookListLent &listaPrestado){
     ofstream archivo (LISTA_PRESTADOS);
     if(archivo.is_open()){
         while (aux!=NULL){
-            archivo<<aux->libro<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
+            archivo<<aux->libro->autor<<","<<aux->libro->titulo<<","<<aux->libro->anio_publicacion<<","<<aux->libro->num_paginas<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
             aux = aux->sgt;
         }
 

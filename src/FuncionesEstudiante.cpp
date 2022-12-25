@@ -10,7 +10,7 @@ void buscarLibro(){
     bookListRegister p = listaDisponible;
     cout<<"LISTA DE LIBROS DISPONIBLES"<<endl;
     while( p != NULL){
-		cout<<p->libro.autor<<" "<<p->libro.titulo<<" "<<p->libro.anio_publicacion<<" "<<p->libro.num_paginas<<" "<<endl;
+		cout<<p->libro->autor<<" "<<p->libro->titulo<<" "<<p->libro->anio_publicacion<<" "<<p->libro->num_paginas<<" "<<endl;
 		p=p->sgt;
 	}
     system("pause");
@@ -32,7 +32,7 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
         cout<<"Escriba el nombre del libro que desea solicitar: "<<endl;
         getline(cin, libro);
         while (aux1!= NULL){
-            if (aux1->libro.titulo == libro){
+            if (aux1->libro->titulo == libro){
                 encontrado = true;
                 break;
             }
@@ -41,12 +41,12 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
         if (encontrado){
             if (listaSolicitado == NULL){
                 if (estudiante->librosSolicitados[1] != "ESPERA"){
-                    nuevo->libro = aux1->libro.titulo;
+                    nuevo->libro = aux1->libro;
                     nuevo->student->nombre = estudiante->nombre; 
                     nuevo->student->correo = estudiante->correo; 
                     nuevo->student->codigo = estudiante->codigo;
                     listaSolicitado = nuevo; 
-                    estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                    estudiante->librosSolicitados[0] = aux1->libro->titulo;
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     ActualizarLibroSolicitadoArchivo(listaSolicitado);
@@ -62,12 +62,12 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
                 while (aux2->sgt!=NULL)
                     aux2 = aux2->sgt;
                  if(estudiante->librosSolicitados[1] != "ESPERA"){
-                    nuevo->libro = aux1->libro.titulo;
+                    nuevo->libro = aux1->libro;
                     nuevo->student->nombre = estudiante->nombre; 
                     nuevo->student->correo = estudiante->correo; 
                     nuevo->student->codigo = estudiante->codigo;
                     aux2->sgt = nuevo;
-                    estudiante->librosSolicitados[0] = aux1->libro.titulo;
+                    estudiante->librosSolicitados[0] = aux1->libro->titulo;
                     estudiante->librosSolicitados[1] = "ESPERA";
                     actualizarListaEstudiantes(estudiante);
                     ActualizarLibroSolicitadoArchivo(listaSolicitado);
@@ -82,8 +82,31 @@ void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSol
         }
         else{
             cout<<"El libro no existe o no esta disponible"<<endl;
+            system("pause");
         }
     }
+}
+
+void verEstadoSolicitud (){
+    system("cls");
+    unsigned opcion;
+    cout<<"ESTADO DE SOLICITUD DE LIBRO"<<endl;
+    cout<<estudiante->librosSolicitados[0]<<" -> "<<estudiante->librosSolicitados[1]<<endl;
+    getch();
+    cout<<"Desea devolver el libro? [1] Si, [2] No"<<endl;
+    cin>>opcion;
+    switch(opcion){
+        case 1:
+            DevolverLibro(listaPrestado, listaDisponible);
+            break;
+        case 2:
+            cout<<"Ok"<<endl;
+            system("pause");
+    }
+}
+
+void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponible){
+
 }
 
 

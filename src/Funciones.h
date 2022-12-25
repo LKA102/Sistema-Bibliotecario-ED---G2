@@ -27,6 +27,7 @@ struct Libros{
     unsigned anio_publicacion;
     unsigned num_paginas;
 };
+typedef Libros* Libro;
 
 struct Estudiante{
     string codigo;
@@ -41,7 +42,7 @@ typedef Estudiante* Student;
 
 //Lista de libros disponibles por el bibliotecario
 struct LibrosDisponibles{
-    Libros libro;
+    Libro libro = new (struct Libros);
     struct LibrosDisponibles* sgt = NULL;
 };
 typedef LibrosDisponibles* bookListRegister;
@@ -51,7 +52,7 @@ typedef LibrosDisponibles* bookListRegister;
 
 //Lista de solicitudes de libros para prestar
 struct LibrosSolicitados{
-    string libro;
+    Libro libro = new (struct Libros);
     Student student = new (struct Estudiante);
     struct LibrosSolicitados* sgt = NULL;
 };
@@ -59,7 +60,7 @@ typedef LibrosSolicitados* bookListRequest;
 
 
 struct LibrosPrestados{
-    string libro;
+     Libro libro = new (struct Libros);
     Student student = new (struct Estudiante);
     struct LibrosPrestados* sgt = NULL;
 };
@@ -96,6 +97,8 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
 void buscarLibro();
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
 void actualizarListaEstudiantes(Student estudiante);
+void verEstadoSolicitud ();
+void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponible);
 
 //ManejoListas
 void verSolicitudes (bookListRequest &listaSolicitado);
