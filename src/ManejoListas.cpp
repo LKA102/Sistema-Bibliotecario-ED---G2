@@ -72,3 +72,23 @@ void EliminarLibroSolicitud(bookListRequest &LibroAnterior, bookListRequest &Lib
         LibroActual->sgt = NULL;
     }
 }
+
+void RetornarLibro(bookListRequest &LibroEliminar, bookListRegister &listaDisponible){
+    bookListRequest aux = LibroEliminar;
+    if (listaDisponible == NULL){
+        listaDisponible = new (struct LibrosDisponibles);
+        listaDisponible->libro = aux->libro;
+        aux->libro = NULL;
+        delete(aux);
+    }
+    else{
+        bookListRegister p = listaDisponible;
+        bookListRegister nuevo = new (struct LibrosDisponibles);
+        while (p->sgt != NULL)
+            p = p->sgt;
+        nuevo->libro = aux->libro;
+        p->sgt = nuevo;
+        aux->libro = NULL;
+        delete(aux);
+    }
+}

@@ -93,19 +93,63 @@ void verEstadoSolicitud (){
     cout<<"ESTADO DE SOLICITUD DE LIBRO"<<endl;
     cout<<estudiante->librosSolicitados[0]<<" -> "<<estudiante->librosSolicitados[1]<<endl;
     getch();
-    cout<<"Desea devolver el libro? [1] Si, [2] No"<<endl;
-    cin>>opcion;
-    switch(opcion){
-        case 1:
-            DevolverLibro(listaPrestado, listaDisponible);
-            break;
-        case 2:
-            cout<<"Ok"<<endl;
-            system("pause");
+    if (estudiante->librosSolicitados[1] == "ACEPTADO"){
+        cout<<"Desea devolver el libro? [1] Si, [2] No"<<endl;
+        cin>>opcion;
+        switch(opcion){
+            case 1:
+                DevolverLibro(listaPrestado, listaDisponible);
+                estudiante->librosSolicitados[0] = " ";
+                estudiante->librosSolicitados[1] = " ";
+                ActualizarLibroDisponibleArchivo(listaDisponible);
+                ActualizarLibroPrestadoArchivo(listaPrestado);
+                actualizarListaEstudiantes(estudiante);
+                cout<<"Libro Devuelto"<<endl;
+                system("pause");
+                break;
+            case 2:
+                cout<<"Ok"<<endl;
+                system("pause");
+                break;
+       }
     }
+
 }
 
 void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponible){
+    bookListLent aux = listaPrestado;
+    bookListLent aux2 = NULL;
+    while (aux != NULL){
+        if (aux->libro->titulo == estudiante->librosSolicitados[0])
+            break;
+        aux2 = aux;
+        aux = aux->sgt;
+    }
+    if (aux2 == NULL){
+        listaPrestado = listaPrestado->sgt;
+        aux->sgt = NULL;
+    }
+    else{
+        aux2->sgt = aux->sgt;
+        aux->sgt = NULL;
+    }
+
+    if (listaDisponible == NULL){
+        listaDisponible = new (struct LibrosDisponibles);
+        listaDisponible->libro = aux->libro;
+        aux->libro = NULL;
+        delete(aux);
+    }
+    else{
+        bookListRegister p = listaDisponible;
+        bookListRegister nuevo = new (struct LibrosDisponibles);
+        while (p->sgt != NULL)
+            p = p->sgt;
+        nuevo->libro = aux->libro;
+        p->sgt = nuevo;
+        aux->libro = NULL;
+        delete(aux);
+    }
 
 }
 

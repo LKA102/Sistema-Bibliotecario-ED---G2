@@ -92,6 +92,7 @@ bookListRegister crearNodo ();
 void RegistrarLibro(bookListRegister &listaDisponible);
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
 
+
 //Funciones Estudiante
 
 void buscarLibro();
@@ -103,6 +104,7 @@ void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponibl
 //ManejoListas
 void verSolicitudes (bookListRequest &listaSolicitado);
 void verPrestados (bookListLent &listaPrestado);
+void RetornarLibro(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
 void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
 void TrasladarLibroSolicitudAPrestado(bookListRequest &LibroSolicitudEliminar, bookListLent &listaPrestado);
 void EliminarLibroSolicitud(bookListRequest &LibroAnterior, bookListRequest &LibroActual, bookListRequest &listaSolicitado);

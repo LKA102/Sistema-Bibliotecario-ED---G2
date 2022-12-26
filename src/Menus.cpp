@@ -55,6 +55,7 @@ void sistemaEstudiante(){
                 break;
             case 3:
                 verEstadoSolicitud();
+                break;
             case 0:
                 delete(estudiante);
                 estudiante = NULL;
@@ -78,6 +79,7 @@ void menuEstudiante2(){
     cout<<"Sistema bibliotecario del estudiante"<<endl;
     cout<<"1.- Buscar Libros Disponibles"<<endl;
     cout<<"2.- Solicitar Libro"<<endl;
+    cout<<"3.- Ver Estado de Libro Solicitado"<<endl;
     cout<<"0.- volver"<<endl;
 }
 

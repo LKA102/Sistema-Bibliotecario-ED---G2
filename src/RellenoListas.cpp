@@ -117,7 +117,7 @@ void rellenarListaSolicitado (bookListRequest &listaSolicitado){
 
 void rellenarListaPrestado (bookListLent &listaPrestado){
     bookListLent aux = NULL;
-    ifstream archivo (LISTA_SOLICITADOS);
+    ifstream archivo (LISTA_PRESTADOS);
     string linea, anio, paginas;
     char delimitador = ',';
     if (archivo.is_open()){

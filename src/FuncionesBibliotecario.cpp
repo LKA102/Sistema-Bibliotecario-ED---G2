@@ -97,6 +97,7 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
                 break;*/
             
             case 2:
+
                 EliminarLibroSolicitud(auxR2, auxR, listaSolicitado);
                 ActualizarLibroSolicitadoArchivo(listaSolicitado);
                 estudiante = auxR->student;
@@ -104,7 +105,8 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
                 estudiante->librosSolicitados[1] = "RECHAZADO";
                 actualizarListaEstudiantes(estudiante);
                 estudiante = NULL;
-                delete(auxR);
+                RetornarLibro(auxR, listaDisponible);
+                ActualizarLibroDisponibleArchivo(listaDisponible);
                 cout<<"Solicitud rechazada"<<endl;
                 system("pause");
                 break;
@@ -119,5 +121,3 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
         }
     }
 }
-
-//actualizarEstadoLibrodeEstudiante()
