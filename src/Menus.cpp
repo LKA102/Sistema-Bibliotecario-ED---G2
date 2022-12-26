@@ -31,10 +31,17 @@ void sistemaBibliotecario(){
             case 2:
                 system("cls");
                 analizarSolicitud(listaDisponible, listaSolicitado, listaPrestado);
-            
-               
+                break;
+            case 3:
+                system("cls");
+                verPrestados(listaPrestado);
+                break;
+            case 4:
+                system("cls");
+                eliminarLibro(listaDisponible);
+                break;
         } 
-    }while (opc!=0);
+    } while (opc!=0);
 
 }
 

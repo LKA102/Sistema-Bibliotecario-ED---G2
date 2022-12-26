@@ -10,7 +10,7 @@ void menuBibliotecario(){
     std::cout<<"[1] Registrar Libros"<<std::endl;
     std::cout<<"[2] Registrar Prestamos"<<std::endl;
     std::cout<<"[3] Consultar Prestamos"<<std::endl;
-    std::cout<<"[5] Eliminar Libro"<<std::endl;
+    std::cout<<"[4] Eliminar Libro"<<std::endl;
     std::cout<<"[0] Volver al Menu principal"<<std::endl;
     std::cout<<"Ingrese una opcion: "; 
 }
@@ -37,9 +37,11 @@ void RegistrarLibro(bookListRegister &listaDisponible){
         listaDisponible = nuevo;
     }
     else{
-        while (p ->sgt != NULL)
+        /*while (p ->sgt != NULL)
             p = p->sgt;
-        p->sgt = nuevo;
+        p->sgt = nuevo;*/
+        nuevo->sgt = listaDisponible;
+        listaDisponible = nuevo;
     }
     cout<<"Registrando libro...."<<endl;
     Sleep(1000);
@@ -120,4 +122,55 @@ void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &lista
             cout<<"El libro no se encuentra en la lista de solicitudes"<<endl;
         }
     }
+}
+
+void eliminarLibro(bookListRegister &listaDisponible){
+    buscarLibro();
+    bookListRegister aux = listaDisponible, aux2 = NULL;
+    bool encontrado = false;
+    if (listaDisponible == NULL)
+        cout<<"No existe ningun libro disponible"<<endl;
+    else{
+        cin.ignore(255, '\n');
+        string libroEliminar, libroEnLista;
+        cout<<"Escriba el nombre del libro a eliminar"<<endl; getline(cin,libroEliminar);
+        for (auto & c: libroEliminar) 
+            c = toupper(c);
+        while (aux != NULL){
+            //Para eliminar el nodo de la lista de solicitudes, hacer lo mismo que hiciste en la lista Disponible con aux1 y aux2
+            libroEnLista = aux->libro->titulo;
+            for (auto & c: libroEnLista) 
+                c = toupper(c);
+            if (libroEliminar == libroEnLista){
+                encontrado = true;
+                break;
+            }
+            aux2 = aux;
+            aux = aux->sgt;
+        }
+        if (encontrado){
+             if (aux2==NULL){
+                if (aux->sgt == NULL){
+                    delete(aux);
+                    listaDisponible = NULL;
+                }
+                else{
+                    listaDisponible = aux->sgt;
+                    delete(aux);
+                }
+             }
+            else{
+                aux2->sgt = aux->sgt;
+                delete(aux);
+                }
+            ActualizarLibroDisponibleArchivo(listaDisponible);
+            cout<<"Libro eliminado"<<endl;
+            system("pause");
+        }
+        else{
+            cout<<"El libro no existe"<<endl;
+            system("pause");
+        }
+    }
+
 }

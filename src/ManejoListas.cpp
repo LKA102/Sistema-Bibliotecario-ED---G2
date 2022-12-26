@@ -33,6 +33,7 @@ void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &l
         aux2 = aux;
         aux = aux->sgt;
     }
+    //El libro a eliminar es el primer nodo
     if (aux2==NULL){
         if (aux->sgt == NULL){
             delete(aux);

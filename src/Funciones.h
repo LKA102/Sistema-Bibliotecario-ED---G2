@@ -91,7 +91,7 @@ void menuBibliotecario();
 bookListRegister crearNodo ();
 void RegistrarLibro(bookListRegister &listaDisponible);
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
-
+void eliminarLibro(bookListRegister &listaDisponible);
 
 //Funciones Estudiante
 
