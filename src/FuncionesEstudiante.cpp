@@ -5,6 +5,7 @@ extern bookListRequest listaSolicitado;
 extern bookListLent listaPrestado;
 
 void buscarLibro(){
+<<<<<<< HEAD
 
     system("cls");
     bookListRegister p = listaDisponible;
@@ -18,6 +19,23 @@ void buscarLibro(){
 
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado){
     
+=======
+    system("cls");
+    bookListRegister p = listaDisponible;
+    cout<<setw(40)<<"LISTA DE LIBROS DISPONIBLES"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    cout<<setw(20)<<"Autor"<<setw(20)<<"Titulo"<<setw(10)<<"Anio"<<setw(10)<<"Paginas"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    while( p != NULL){
+		cout<<setw(20)<<p->libro->autor<<setw(20)<<p->libro->titulo<<setw(10)<<p->libro->anio_publicacion<<setw(10)<<p->libro->num_paginas<<endl;
+		p=p->sgt;
+	}
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    system("pause");
+}
+
+void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado){  
+>>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
     bookListRegister aux1 = listaDisponible;
     bookListRequest aux2 = listaSolicitado;
     bookListRequest nuevo = new (struct LibrosSolicitados);
@@ -150,7 +168,10 @@ void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponibl
         aux->libro = NULL;
         delete(aux);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 

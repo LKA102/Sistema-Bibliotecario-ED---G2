@@ -5,6 +5,7 @@ extern bookListRequest listaSolicitado;
 extern bookListLent listaPrestado;
 
 void verSolicitudes (bookListRequest &listaSolicitado){
+<<<<<<< HEAD
 bookListRequest aux = listaSolicitado;
 cout<<"LISTA DE LIBROS SOLICITADOS"<<endl;
 while (aux != NULL){
@@ -12,10 +13,24 @@ while (aux != NULL){
     aux = aux->sgt;
 }
 system("pause");
+=======
+    bookListRequest aux = listaSolicitado;
+    cout<<setw(40)<<"LISTA DE LIBROS SOLICITADOS"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    cout<<setw(20)<<"Titulo"<<setw(10)<<"Codigo"<<setw(15)<<"Nombre"<<setw(20)<<"Correo"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    while (aux != NULL){
+        cout<<setw(20)<<aux->libro->titulo<<setw(10)<<aux->student->codigo<<setw(15)<<aux->student->nombre<<setw(20)<<aux->student->correo<<endl;
+        aux = aux->sgt;
+    }
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    system("pause");
+>>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 
 void verPrestados (bookListLent &listaPrestado){
+<<<<<<< HEAD
 bookListLent aux = listaPrestado;
 cout<<"LISTA DE LIBROS PRESTADOS"<<endl;
 while (aux != NULL){
@@ -23,6 +38,19 @@ while (aux != NULL){
     aux = aux->sgt;
 }
 system("pause");
+=======
+    bookListLent aux = listaPrestado;
+    cout<<setw(40)<<"LISTA DE LIBROS PRESTADOS"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    cout<<setw(20)<<"Titulo"<<setw(10)<<"Codigo"<<setw(15)<<"Nombre"<<setw(20)<<"Correo"<<endl;
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    while (aux != NULL){
+        cout<<setw(20)<<aux->libro->titulo<<setw(10)<<aux->student->codigo<<setw(15)<<aux->student->nombre<<setw(20)<<aux->student->correo<<endl;
+        aux = aux->sgt;
+    }
+    cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
+    system("pause");
+>>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 

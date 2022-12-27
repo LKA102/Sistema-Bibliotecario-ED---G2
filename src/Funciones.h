@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 #include <windows.h>
+#include <iomanip>
 
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
@@ -47,9 +48,49 @@ struct LibrosDisponibles{
 };
 typedef LibrosDisponibles* bookListRegister;
 
+#define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
+#define NOMBRE_ESTUDIANTE "Estudiantes.csv"
+#define LISTA_DISPONIBLES "LibrosDisponibles.csv"
+#define LISTA_SOLICITADOS "LibrosSolicitados.csv"
+#define LISTA_PRESTADOS "LibrosPrestados.csv"
+
+
+using namespace std;
+
+//Estructuras creadas
+
+struct Libros{
+    string autor;
+    string titulo;
+    unsigned anio_publicacion;
+    unsigned num_paginas;
+};
+typedef Libros* Libro;
+
+struct Estudiante{
+    string codigo;
+    string nombre;
+    string correo;
+    string librosSolicitados[2] = {" "," "};
+};
+
+typedef Estudiante* Student;
 
 
 
+<<<<<<< HEAD
+//Lista de libros disponibles por el bibliotecario
+struct LibrosDisponibles{
+    Libro libro = new (struct Libros);
+    struct LibrosDisponibles* sgt = NULL;
+};
+typedef LibrosDisponibles* bookListRegister;
+
+
+
+
+=======
+>>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 //Lista de solicitudes de libros para prestar
 struct LibrosSolicitados{
     Libro libro = new (struct Libros);

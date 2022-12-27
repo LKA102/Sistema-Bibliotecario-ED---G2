@@ -23,7 +23,6 @@ int main(){
                 cout<<"Ingrese usuario"<<endl;
                 cin>>nomUsu;
                 cout<<"Ingrese password"<<endl;
-                //cin>>pasUsu;
                 char key;
                 pasUsu="";
                 key = getch();
@@ -95,8 +94,7 @@ int main(){
                 system("pause");
                 break;
             }    
-        }
-        
+        }       
     }while(opc != 0);
     system("pause");
     return 0;
