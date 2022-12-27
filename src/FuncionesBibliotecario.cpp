@@ -6,15 +6,6 @@ extern bookListLent listaPrestado;
 
 
 void menuBibliotecario(){
-<<<<<<< HEAD
-    std::cout<<"\t\tMENU BIBLIOTECARIO"<<std::endl;
-    std::cout<<"[1] Registrar Libros"<<std::endl;
-    std::cout<<"[2] Registrar Prestamos"<<std::endl;
-    std::cout<<"[3] Consultar Prestamos"<<std::endl;
-    std::cout<<"[4] Eliminar Libro"<<std::endl;
-    std::cout<<"[0] Volver al Menu principal"<<std::endl;
-    std::cout<<"Ingrese una opcion: "; 
-=======
     std::cout<<"\t\t\t*****************************************"<<endl;
     std::cout<<"\t\t\t*-----------MENU BIBLIOTECARIO----------*"<<endl;
     std::cout<<"\t\t\t*****************************************"<<endl;
@@ -26,7 +17,6 @@ void menuBibliotecario(){
     std::cout<<"\t\t\t*         [0] Volver al Menu principal  *"<<endl;
     std::cout<<"\t\t\t*****************************************"<<endl;
     std::cout<<"\t\t\tIngrese una opcion: ";
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 
@@ -51,12 +41,6 @@ void RegistrarLibro(bookListRegister &listaDisponible){
         listaDisponible = nuevo;
     }
     else{
-<<<<<<< HEAD
-        /*while (p ->sgt != NULL)
-            p = p->sgt;
-        p->sgt = nuevo;*/
-=======
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
         nuevo->sgt = listaDisponible;
         listaDisponible = nuevo;
     }
@@ -153,12 +137,7 @@ void eliminarLibro(bookListRegister &listaDisponible){
         cout<<"Escriba el nombre del libro a eliminar"<<endl; getline(cin,libroEliminar);
         for (auto & c: libroEliminar) 
             c = toupper(c);
-<<<<<<< HEAD
-        while (aux != NULL){
-            //Para eliminar el nodo de la lista de solicitudes, hacer lo mismo que hiciste en la lista Disponible con aux1 y aux2
-=======
         while (aux != NULL){           
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
             libroEnLista = aux->libro->titulo;
             for (auto & c: libroEnLista) 
                 c = toupper(c);

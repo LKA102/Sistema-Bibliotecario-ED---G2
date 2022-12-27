@@ -17,17 +17,9 @@ void menuPrincipal(){
     cout<<"\t\t\t*************************************"<<endl;
 }
 
-<<<<<<< HEAD
-
-//Menu del Bibliotecario después de iniciar sesion
-void sistemaBibliotecario(){
-    int opc;
-    
-=======
 //Menu del Bibliotecario después de iniciar sesion
 void sistemaBibliotecario(){
     int opc;    
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
     do{
         system("cls");
         menuBibliotecario();
@@ -52,20 +44,11 @@ void sistemaBibliotecario(){
                 break;
         } 
     } while (opc!=0);
-<<<<<<< HEAD
-
-=======
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 //Menu para el estudiante después de iniciar sesion
 void sistemaEstudiante(){
-<<<<<<< HEAD
-    int opc;
-    
-=======
     int opc;   
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
     do{
         system("cls");
         menuEstudiante2();
@@ -84,25 +67,12 @@ void sistemaEstudiante(){
                 delete(estudiante);
                 estudiante = NULL;
                 break;
-<<<<<<< HEAD
-
-        } 
-    } while (opc!=0);
-    
-=======
         } 
     } while (opc!=0);   
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 void menuEstudiante(){
     system("cls");
-<<<<<<< HEAD
-    cout<<"Sistema bibliotecario del estudiante"<<endl;
-    cout<<"1.- Ingresar al sistema"<<endl;
-    cout<<"2.- Registrar nuevo estudiante"<<endl;
-    cout<<"0.- volver"<<endl;
-=======
     cout<<"\t\t\t****************************************************"<<endl;
     cout<<"\t\t\t*-------SISTEMA BIBLIOTECARIO DEL ESTUDIANTE-------*"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
@@ -111,18 +81,10 @@ void menuEstudiante(){
     cout<<"\t\t\t*           [2] Registrar nuevo estudiante         *"<<endl;
     cout<<"\t\t\t*           [0] Volver                             *"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 void menuEstudiante2(){
     system("cls");
-<<<<<<< HEAD
-    cout<<"Sistema bibliotecario del estudiante"<<endl;
-    cout<<"1.- Buscar Libros Disponibles"<<endl;
-    cout<<"2.- Solicitar Libro"<<endl;
-    cout<<"3.- Ver Estado de Libro Solicitado"<<endl;
-    cout<<"0.- volver"<<endl;
-=======
     cout<<"\t\t\t****************************************************"<<endl;
     cout<<"\t\t\t*-------SISTEMA BIBLIOTECARIO DEL ESTUDIANTE-------*"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
@@ -132,6 +94,5 @@ void menuEstudiante2(){
     cout<<"\t\t\t*        [3] Ver Estado de Libro Solicitado        *"<<endl;
     cout<<"\t\t\t*        [0] Volver                                *"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 

@@ -5,15 +5,6 @@ extern bookListRequest listaSolicitado;
 extern bookListLent listaPrestado;
 
 void verSolicitudes (bookListRequest &listaSolicitado){
-<<<<<<< HEAD
-bookListRequest aux = listaSolicitado;
-cout<<"LISTA DE LIBROS SOLICITADOS"<<endl;
-while (aux != NULL){
-    cout<<aux->libro->titulo<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
-    aux = aux->sgt;
-}
-system("pause");
-=======
     bookListRequest aux = listaSolicitado;
     cout<<setw(40)<<"LISTA DE LIBROS SOLICITADOS"<<endl;
     cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
@@ -25,20 +16,10 @@ system("pause");
     }
     cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
     system("pause");
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 
 void verPrestados (bookListLent &listaPrestado){
-<<<<<<< HEAD
-bookListLent aux = listaPrestado;
-cout<<"LISTA DE LIBROS PRESTADOS"<<endl;
-while (aux != NULL){
-    cout<<aux->libro->titulo<<","<<aux->student->codigo<<","<<aux->student->nombre<<","<<aux->student->correo<<endl;
-    aux = aux->sgt;
-}
-system("pause");
-=======
     bookListLent aux = listaPrestado;
     cout<<setw(40)<<"LISTA DE LIBROS PRESTADOS"<<endl;
     cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
@@ -50,7 +31,6 @@ system("pause");
     }
     cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
     system("pause");
->>>>>>> 7c7c654993d0ef1f4fd542bd80f7e8df939d076a
 }
 
 
