@@ -1,28 +1,27 @@
 #pragma once
 
-#include <iostream>
-#include <conio.h>
-#include <vector>
+#include <iostream> //cout y cin
+#include <conio.h> //Uso funcion getch
+#include <vector> //Usamos sus funciones para actualizar archivo estudiantes
 #include <stdlib.h>
-#include <fstream>
-#include <time.h>
-#include <sstream>
-#include <string>
-#include <windows.h>
-#include <iomanip>
+#include <fstream> //Uso de archivos
+#include <time.h> //Funcion sleep
+#include <sstream> //Tipo de dato stringstream
+#include <string> //Uso de strings en CPP
+#include <windows.h> //Funciones System
+#include <iomanip> //Funcion setw
 
-
-
-
-
+//Apodos de los archivos (constantes)
 #define NOMBRE_BIBLIOTECARIO "Bibliotecario.csv"
 #define NOMBRE_ESTUDIANTE "Estudiantes.csv"
 #define LISTA_DISPONIBLES "LibrosDisponibles.csv"
 #define LISTA_SOLICITADOS "LibrosSolicitados.csv"
 #define LISTA_PRESTADOS "LibrosPrestados.csv"
+#define NUM_NODOS 7
 
 
 using namespace std;
+
 
 //Estructuras creadas
 
@@ -68,7 +67,7 @@ typedef LibrosPrestados* bookListLent;
 
 
 
-//Funciones Sistema
+//Funciones Sistema: EYSEN
 void menuPrincipal(void);
 void sistemaBibliotecario(void);
 void sistemaEstudiante(void);
@@ -78,7 +77,7 @@ int ingresarSistemaBibliotecario(std::string, std::string);
 int ingresarSistemaEstudiante(std::string);
 void registrarEstudiante(std::string,std::string,std::string);
 
-//Funciones automaticas 
+//Funciones automaticas : Stefano
 void rellenarListaDisponible(bookListRegister &listaDisponible);
 void rellenarListaSolicitado (bookListRequest &listaSolicitado);
 void rellenarListaPrestado (bookListLent &listaPrestado);
@@ -86,14 +85,14 @@ void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible);
 void ActualizarLibroSolicitadoArchivo(bookListRequest &listaSolicitado);
 void ActualizarLibroPrestadoArchivo(bookListLent &listaPrestado);
 
-//Funciones Bibliotecario
+//Funciones Bibliotecario: Adrian 
 void menuBibliotecario();
 bookListRegister crearNodo ();
 void RegistrarLibro(bookListRegister &listaDisponible);
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
 void eliminarLibro(bookListRegister &listaDisponible);
 
-//Funciones Estudiante
+//Funciones Estudiante: Rosmeri
 
 void buscarLibro();
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
@@ -101,10 +100,17 @@ void actualizarListaEstudiantes(Student estudiante);
 void verEstadoSolicitud ();
 void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponible);
 
-//ManejoListas
+
+//ManejoListas: Stefano
 void verSolicitudes (bookListRequest &listaSolicitado);
 void verPrestados (bookListLent &listaPrestado);
 void RetornarLibro(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
 void EliminarLibroDisponible(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
 void TrasladarLibroSolicitudAPrestado(bookListRequest &LibroSolicitudEliminar, bookListLent &listaPrestado);
 void EliminarLibroSolicitud(bookListRequest &LibroAnterior, bookListRequest &LibroActual, bookListRequest &listaSolicitado);
+
+//Dijkstra
+void verMapa();
+int Nodo_Min(int[], bool[]);
+void display(int[], int[]);
+void Dijkstra(int);

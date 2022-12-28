@@ -110,7 +110,7 @@ void verEstadoSolicitud (){
                 system("pause");
                 break;
             case 2:
-                cout<<"Ok"<<endl;
+                cout<<"Libro no devuelto"<<endl;
                 system("pause");
                 break;
        }
@@ -153,5 +153,6 @@ void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponibl
         delete(aux);
     }
 }
+
 
 

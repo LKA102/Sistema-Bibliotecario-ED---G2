@@ -15,6 +15,7 @@ void menuPrincipal(){
     cout<<"\t\t\t*         [2] Estudiante            *"<<endl;
     cout<<"\t\t\t*         [0] Salir                 *"<<endl;
     cout<<"\t\t\t*************************************"<<endl;
+    std::cout<<"\t\t\tIngrese una opcion: ";
 }
 
 //Menu del Bibliotecario después de iniciar sesion
@@ -63,6 +64,10 @@ void sistemaEstudiante(){
             case 3:
                 verEstadoSolicitud();
                 break;
+            case 4:
+                system("cls");
+                verMapa();
+                break;    
             case 0:
                 delete(estudiante);
                 estudiante = NULL;
@@ -81,6 +86,7 @@ void menuEstudiante(){
     cout<<"\t\t\t*           [2] Registrar nuevo estudiante         *"<<endl;
     cout<<"\t\t\t*           [0] Volver                             *"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
+    std::cout<<"\t\t\tIngrese una opcion: ";
 }
 
 void menuEstudiante2(){
@@ -92,7 +98,9 @@ void menuEstudiante2(){
     cout<<"\t\t\t*        [1] Buscar Libros Disponibles             *"<<endl;
     cout<<"\t\t\t*        [2] Solicitar Libro                       *"<<endl;
     cout<<"\t\t\t*        [3] Ver Estado de Libro Solicitado        *"<<endl;
+    cout<<"\t\t\t*        [4] Ver Mapa                              *"<<endl;
     cout<<"\t\t\t*        [0] Volver                                *"<<endl;
     cout<<"\t\t\t****************************************************"<<endl;
+    std::cout<<"\t\t\tIngrese una opcion: ";
 }
 

@@ -16,7 +16,7 @@ void menuBibliotecario(){
     std::cout<<"\t\t\t*         [4] Eliminar Libro            *"<<endl;
     std::cout<<"\t\t\t*         [0] Volver al Menu principal  *"<<endl;
     std::cout<<"\t\t\t*****************************************"<<endl;
-    std::cout<<"\t\t\tIngrese una opcion: ";
+    
 }
 
 
