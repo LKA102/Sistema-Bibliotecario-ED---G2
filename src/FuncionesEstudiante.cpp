@@ -16,7 +16,7 @@ void buscarLibro(){
 		p=p->sgt;
 	}
     cout<<setw(20)<<"----------------------------------------------------------------"<<endl;
-    system("pause");
+    getch();
 }
 
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado){  
@@ -107,11 +107,11 @@ void verEstadoSolicitud (){
                 ActualizarLibroPrestadoArchivo(listaPrestado);
                 actualizarListaEstudiantes(estudiante);
                 cout<<"Libro Devuelto"<<endl;
-                system("pause");
+                getch();
                 break;
             case 2:
                 cout<<"Libro no devuelto"<<endl;
-                system("pause");
+                getch();
                 break;
        }
     }

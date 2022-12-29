@@ -16,6 +16,7 @@ void menuBibliotecario(){
     std::cout<<"\t\t\t*         [4] Eliminar Libro            *"<<endl;
     std::cout<<"\t\t\t*         [0] Volver al Menu principal  *"<<endl;
     std::cout<<"\t\t\t*****************************************"<<endl;
+    std::cout<<"\t\t\tIngrese una opcion: ";
     
 }
 
@@ -164,11 +165,11 @@ void eliminarLibro(bookListRegister &listaDisponible){
                 delete(aux);
                 }
             ActualizarLibroDisponibleArchivo(listaDisponible);
-            cout<<"Libro eliminado"<<endl;
+            cout<<"\nRPTA: Libro eliminado"<<endl;
             system("pause");
         }
         else{
-            cout<<"El libro no existe"<<endl;
+            cout<<"\nRPTA: El libro no existe"<<endl;
             system("pause");
         }
     }
