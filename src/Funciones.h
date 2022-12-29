@@ -67,7 +67,7 @@ typedef LibrosPrestados* bookListLent;
 
 
 
-//Funciones Sistema: EYSEN
+//Funciones Sistema
 void menuPrincipal(void);
 void sistemaBibliotecario(void);
 void sistemaEstudiante(void);
@@ -77,7 +77,7 @@ int ingresarSistemaBibliotecario(std::string, std::string);
 int ingresarSistemaEstudiante(std::string);
 void registrarEstudiante(std::string,std::string,std::string);
 
-//Funciones automaticas : Stefano
+//Funciones automaticas
 void rellenarListaDisponible(bookListRegister &listaDisponible);
 void rellenarListaSolicitado (bookListRequest &listaSolicitado);
 void rellenarListaPrestado (bookListLent &listaPrestado);
@@ -85,14 +85,14 @@ void ActualizarLibroDisponibleArchivo(bookListRegister &listaDisponible);
 void ActualizarLibroSolicitadoArchivo(bookListRequest &listaSolicitado);
 void ActualizarLibroPrestadoArchivo(bookListLent &listaPrestado);
 
-//Funciones Bibliotecario: Adrian 
+//Funciones Bibliotecario
 void menuBibliotecario();
 bookListRegister crearNodo ();
 void RegistrarLibro(bookListRegister &listaDisponible);
 void analizarSolicitud(bookListRegister &listaDisponible, bookListRequest &listaSolicitado, bookListLent &listaPrestado);
 void eliminarLibro(bookListRegister &listaDisponible);
 
-//Funciones Estudiante: Rosmeri
+//Funciones Estudiante
 
 void buscarLibro();
 void SolicitarLibro(bookListRegister &listaDisponible, bookListRequest &listaSolicitado);
@@ -101,7 +101,7 @@ void verEstadoSolicitud ();
 void DevolverLibro(bookListLent &listaPrestado, bookListRegister &listaDisponible);
 
 
-//ManejoListas: Stefano
+//ManejoListas
 void verSolicitudes (bookListRequest &listaSolicitado);
 void verPrestados (bookListLent &listaPrestado);
 void RetornarLibro(bookListRequest &LibroEliminar, bookListRegister &listaDisponible);
